@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package speechly.slu.v1;
+
+service SLU {
+
+  rpc Stream(stream SLURequest) returns (stream SLUResponse);
+}
+
+message SLURequest {
+  oneof streaming_request {
+    SLUConfig config = 1;
+    SLUEvent event = 2;
+    bytes audio = 3;
+  }
+}
+
+message SLUConfig {
+  enum Encoding {
+    LINEAR16 = 0;
+  }
+  Encoding encoding = 1;
+  int32 channels = 2;
+  int32 sample_rate_hertz = 3;
+  string language_code = 4;
+}
+
+message SLUEvent {
+  enum Event {
+    START = 0;
+    STOP = 1;
+  }
+
+  Event event = 1;
+  string app_id = 2;
+}
+
+message SLUResponse {
+  string audio_context = 1;
+  int32 segment_id = 2;
+  oneof streaming_response {
+    SLUTranscript transcript = 3;
+    SLUEntity entity = 4;
+    SLUIntent intent = 5;
+    SLUSegmentEnd segment_end = 6;
+    SLUTentativeTranscript tentative_transcript = 7;
+    SLUTentativeEntities tentative_entities = 8;
+    SLUIntent tentative_intent = 9;
+    SLUStarted started = 10;
+    SLUFinished finished = 11;
+  }
+}
+
+message SLUTranscript {
+  string word = 1;
+  int32 index = 2;
+  int32 start_time = 3;
+  int32 end_time = 4;
+}
+message SLUEntity {
+  string entity = 1;
+  string value = 2;
+  int32 start_position = 3;
+  int32 end_position = 4;
+}
+message SLUIntent {
+  string intent = 1;
+}
+message SLUSegmentEnd {}
+message SLUTentativeTranscript {
+  string tentative_transcript = 1;
+  repeated SLUTranscript tentative_words = 2;
+}
+
+message SLUTentativeEntities {
+  repeated SLUEntity tentative_entities = 1;
+}
+
+message SLUStarted {}
+
+message SLUFinished {
+  SLUError error = 2;
+}
+
+message SLUError {
+  string code = 1;
+  string message = 2;
+}

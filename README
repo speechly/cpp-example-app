@@ -1,0 +1,7 @@
+# cpp-example-app
+
+# Build
+`bazel build //main:cpp-example-app`
+
+# Run
+`bazel run //main:cpp-example-app`
