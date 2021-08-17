@@ -4,7 +4,7 @@
 #include <memory>
 #include <thread>
 #include <grpcpp/grpcpp.h>
-#include "main/slu.grpc.pb.h"
+#include "main/Speechly/protos/slu.grpc.pb.h"
 
 using grpc::ClientContext;
 using grpc::Channel;

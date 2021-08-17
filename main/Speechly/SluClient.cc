@@ -4,9 +4,9 @@
 #include <thread>
 #include <grpcpp/grpcpp.h>
 
-#include "main/slu.grpc.pb.h"
-#include "SluClient.h"
-#include "RootCerts.h"
+#include "main/Speechly/protos/slu.grpc.pb.h"
+#include "main/Speechly/SluClient.h"
+#include "main/RootCerts.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
@@ -95,7 +95,7 @@ void SluClient::stop()
 void SluClient::sendAudio(int* audio, int number)
 {
   SLURequest sluRequest;
-  sluRequest.set_audio(audio, number*2);
+  sluRequest.set_audio(audio, number);
   stream->Write(sluRequest);
 }
 

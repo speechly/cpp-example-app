@@ -2,7 +2,7 @@
 #define MICROPHONE_H
 
 #include <AudioToolbox/AudioToolbox.h>
-#include "SluClient.h"
+#include "main/Speechly/SluClient.h"
 
 namespace speechly {
   

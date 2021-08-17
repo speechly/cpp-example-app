@@ -3,9 +3,9 @@
 #include <string>
 #include <grpcpp/grpcpp.h>
 
-#include "IdentityClient.h"
-#include "main/identity.grpc.pb.h"
-#include "RootCerts.h"
+#include "main/Speechly/IdentityClient.h"
+#include "main/Speechly/protos/identity.grpc.pb.h"
+#include "main/RootCerts.h"
 
 using grpc::Channel;
 using grpc::ClientContext;

@@ -4,7 +4,7 @@ load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 
 proto_library(
     name = "speechly_proto",
-    srcs = ["identity.proto", "slu.proto"],
+    srcs = ["Speechly/protos/identity.proto", "Speechly/protos/slu.proto"],
 )
 
 cc_proto_library(
@@ -21,8 +21,8 @@ cc_grpc_library(
 
 cc_library(
     name = "client",
-    srcs = ["SpeechlyClient.cc", "Microphone.cc", "IdentityClient.cc", "SluClient.cc"],
-    hdrs = ["SpeechlyClient.h", "Microphone.h", "IdentityClient.h", "SluClient.h", "RootCerts.h"],
+    srcs = glob(["Speechly/*.cc", "Microphone/*.cc"]),
+    hdrs = glob(["Speechly/*.h", "Microphone/*.h", "RootCerts.h"]),
     linkopts = [
         "-framework CoreFoundation",
         "-framework AudioToolbox",

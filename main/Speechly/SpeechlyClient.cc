@@ -4,11 +4,11 @@
 #include <thread>
 #include <grpcpp/grpcpp.h>
 
-#include "main/slu.grpc.pb.h"
-#include "SpeechlyClient.h"
-#include "IdentityClient.h"
-#include "SluClient.h"
-#include "RootCerts.h"
+#include "main/Speechly/protos/slu.grpc.pb.h"
+#include "main/Speechly/SpeechlyClient.h"
+#include "main/Speechly/IdentityClient.h"
+#include "main/Speechly/SluClient.h"
+#include "main/RootCerts.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
@@ -88,9 +88,6 @@ void SpeechlyClient::initialize()
   readThread = std::thread{&SpeechlyClient::read, this};
 
   mic = new Microphone(sluClient);
-  // mic.onAudio = [](int numberOfpackets, float* data) {
-    
-  // };
 
 }
 

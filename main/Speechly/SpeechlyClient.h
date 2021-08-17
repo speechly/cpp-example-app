@@ -4,8 +4,8 @@
 #include <memory>
 #include <thread>
 #include <grpcpp/grpcpp.h>
-#include "SluClient.h"
-#include "Microphone.h"
+#include "main/Speechly/SluClient.h"
+#include "main/Microphone/Microphone.h"
 
 using grpc::ClientContext;
 using grpc::Channel;

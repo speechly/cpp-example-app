@@ -1,6 +1,6 @@
 #include <iostream>
 #include <chrono>
-#include "SpeechlyClient.h"
+#include "Speechly/SpeechlyClient.h"
 
 using speechly::SpeechlyClient;
 
@@ -19,7 +19,6 @@ int main(void) {
 
     std::cin.get(key);
     
-
     if (key == 'q')
     {
         break;

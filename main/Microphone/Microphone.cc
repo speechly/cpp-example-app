@@ -23,7 +23,7 @@ void MyAQInputCallback(void *inUserData, AudioQueueRef inQueue, AudioQueueBuffer
     if (inNumPackets > 0) {
       if (mic->recording) {
         int* values = (int *) inBuffer->mAudioData;
-        mic->sluClient->sendAudio(values, inNumPackets);
+        mic->sluClient->sendAudio(values, inNumPackets * 2); // 16-bit
       }
     }
     CheckError(
